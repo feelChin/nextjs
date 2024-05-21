@@ -1,0 +1,14 @@
+.help {
+  padding-top: 150px;
+
+
+
+  .item {
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
