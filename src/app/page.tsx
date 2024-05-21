@@ -5,7 +5,7 @@ export default function Home() {
 		<section className={style.home}>
 			<div className={`${style.wrapper} w1200`}>
 				<div className={style.info}>
-					注册即送最高<span>2222小时</span>
+					注册即送最高<span>222211小时</span>
 				</div>
 				<div className={style.title}>Z加速 / Z稳定</div>
 				<div className={style.downloadWrapper}>
