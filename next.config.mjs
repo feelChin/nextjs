@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// env: {
-	// 	API_URL: process.env.API_URL || "http://localhost:9091",
-	// },
+	env: {
+		NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+	},
 };
 
 export default nextConfig;

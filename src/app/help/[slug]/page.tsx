@@ -4,7 +4,7 @@ interface props {
 
 export default async function Page({ params }: props) {
 	const revalidatedData = await fetch(
-		`${process.env.__NEXT_PRIVATE_ORIGIN}/api/help?id=${params.slug}`,
+		`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/help?id=${params.slug}`,
 		{
 			next: { revalidate: 10 },
 		}
