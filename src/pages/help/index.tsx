@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GetServerSideProps } from "next";
 import style from "./index.module.scss";
 
 interface article {
@@ -8,29 +9,33 @@ interface article {
 	id: number;
 }
 
-async function Index() {
-	const revalidatedData = await fetch(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/api`
-	);
+export async function getStaticProps() {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api`);
+	const { data } = await res.json();
 
-	const { data } = await revalidatedData.json();
+	return {
+		props: {
+			data,
+		},
+	};
+}
+
+export default async function Index(props: any) {
+	console.log(props);
 
 	return (
 		<section className={style.help}>
 			<div className="w1200">
-				{process.env.NEXT_PUBLIC_API_BASE_URL}
 				<div className={style.list}>
-					{data.map(({ id, article_title }: article, index: number) => {
+					{/* {data.map(({ id, article_title }: article, index: number) => {
 						return (
 							<div key={index} className={style.item}>
 								<Link href={`/help/${id}`}>{article_title}</Link>
 							</div>
 						);
-					})}
+					})} */}
 				</div>
 			</div>
 		</section>
 	);
 }
-
-export default Index;

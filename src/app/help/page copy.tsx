@@ -14,6 +14,7 @@ async function Index() {
 	);
 
 	const { data } = await revalidatedData.json();
+	console.log(process.env);
 
 	return (
 		<section className={style.help}>
