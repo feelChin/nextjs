@@ -10,10 +10,7 @@ interface article {
 
 async function Index() {
 	const revalidatedData = await fetch(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/api`,
-		{
-			next: { revalidate: 10 },
-		}
+		`${process.env.NEXT_PUBLIC_API_BASE_URL}/api`
 	);
 
 	const { data } = await revalidatedData.json();
