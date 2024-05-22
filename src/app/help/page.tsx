@@ -22,7 +22,7 @@ async function Index() {
 					{data.map(({ id, article_title }: article, index: number) => {
 						return (
 							<div key={index} className={style.item}>
-								{/* <Link href={`/help/${id}`}>{article_title}</Link> */}
+								<Link href={`/help/${id}`}>{article_title}</Link>
 							</div>
 						);
 					})}
