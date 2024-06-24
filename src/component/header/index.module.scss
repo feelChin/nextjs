@@ -1,0 +1,136 @@
+@import "@style/_util.scss";
+
+
+.header {
+  position: fixed;
+  height: vw(100);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--bgColor);
+  user-select: none;
+
+  &:after {
+    content: "";
+    @include fill;
+    z-index: -1;
+    box-shadow: 0px 0vw 0.625vw var(--textColor);
+    opacity: .1;
+  }
+
+
+  :global(.w1200) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &>section {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .logo {
+    @include fs(40);
+    color: var(--textColor);
+    letter-spacing: vw(-1);
+  }
+
+  nav {
+    margin-left: vw(120);
+    display: flex;
+    align-items: center;
+
+    .item {
+      margin: 0 vw(10);
+      @include fs(22);
+      transition: .3s !important;
+
+      &:hover {
+        color: var(--mainColor);
+      }
+
+      &.active {
+        color: var(--mainColor);
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    color: var(--textColor);
+
+    .userInfo {
+      max-width: vw(240);
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar {
+      width: vw(50);
+      height: vw(50);
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    p {
+      margin-left: vw(20);
+      @include ell(1);
+      max-width: vw(140);
+      @include fs(20)
+    }
+
+    .menu {
+      @include flexCenter;
+      padding: vw(6) vw(12);
+      background: var(--menu);
+      border-radius: var(--radius);
+      margin: 0 vw(8);
+      cursor: pointer;
+      transition: .4s;
+
+      &:hover {
+        color: white;
+        background: var(--mainColor);
+      }
+    }
+  }
+
+  .theme {
+    margin-left: vw(30);
+
+    .dot {
+      position: relative;
+      width: vw(18);
+      height: vw(18);
+      border-radius: 50%;
+      background: var(--textColor);
+      cursor: pointer;
+      transition: .4s;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: vw(30);
+        height: vw(30);
+        border: 2px solid currentColor;
+        @include transformCenter;
+        border-radius: 50%;
+        transition: .4s;
+      }
+
+      &:hover {
+        background: var(--mainColor);
+
+        &:after {
+          border-color: var(--mainColor);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "@style/_util.scss";
+
+.login {
+  padding-top: 30px;
+  height: 100%;
+  text-align: center;
+
+
+
+  .logo {
+    font-size: 30px;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: var(--textColor_6);
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 70%;
+    height: 40px;
+    background: var(--bgColor_05);
+    border-radius: var(--radius);
+    margin: 0 auto 18px;
+    padding: 0 10px;
+
+    &:focus {
+      box-shadow: 0 0 10px var(--mainColor_3);
+    }
+  }
+
+  button {
+    width: 40%;
+    height: 40px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: white;
+    background: var(--mainColor);
+  }
+
+  .flex {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  span {
+    display: block;
+    margin: 0 10px;
+    transition: .4s;
+    color: var(--textColor_6);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--mainColor);
+
+    }
+  }
+}

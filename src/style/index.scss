@@ -1,0 +1,68 @@
+@import "./_reset.scss";
+@import "./_util.scss";
+
+
+.w1200 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bgColor_05);
+  padding: vw(160) 0 vw(60) 0;
+}
+
+figure {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.menuWrapper {
+  display: flex;
+  align-items: center;
+
+  .menu {
+    margin-right: vw(30);
+  }
+}
+
+.menu {
+  width: vw(160);
+  height: vw(50);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color .4s, color .4s;
+  background: var(--menu);
+
+  &:hover {
+    background: var(--mainColor);
+    color: white;
+
+    * {
+      color: white;
+    }
+  }
+
+  &.active {
+    background: var(--mainColor);
+    color: white;
+
+    * {
+      color: white;
+    }
+  }
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.ant-input-number-handler-wrap {
+  display: none !important;
+}

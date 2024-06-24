@@ -1,0 +1,15 @@
+@import "@style/_util.scss";
+
+.editWrapper {
+  padding: vw(40);
+  background: var(--bgColor);
+  box-shadow: 0 0 vw(10) var(--bgColor_05);
+  border-radius: var(--radius);
+
+  h5 {
+    font-size: vw(24);
+    font-weight: 700;
+    margin-bottom: vw(40);
+  }
+
+}

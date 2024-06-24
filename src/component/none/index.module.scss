@@ -1,0 +1,17 @@
+@import "@style/_util.scss";
+
+.none {
+  padding: vw(40);
+  @include flexCenter;
+  flex-direction: column;
+
+  i {
+    @include fs(75);
+    color: var(--textColor_1);
+    margin-bottom: vw(30);
+  }
+
+  p {
+    color: var(--textColor_6);
+  }
+}

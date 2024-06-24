@@ -1,0 +1,95 @@
+ @import "@style/_util.scss";
+
+ .editUser {
+   background: var(--bgColor);
+   border-radius: var(--radius);
+   box-shadow: 0 0 vw(10) var(--bgColor_05);
+   padding: vw(40);
+
+   .item {
+     display: flex;
+     align-items: center;
+     margin-bottom: vw(50);
+
+     h5 {
+       @include fs(20);
+       margin-right: vw(50);
+     }
+
+     .list {
+       flex: 1;
+       display: flex;
+       flex-wrap: wrap;
+
+
+       figure {
+         width: 12%;
+         margin: 0 auto;
+         position: relative;
+         border: 4px solid transparent;
+         transition: .4s;
+         cursor: pointer;
+         border-radius: 50%;
+         overflow: hidden;
+
+         img {
+           transition: .4s;
+         }
+
+         &:hover,
+         &.active {
+           border-color: var(--mainColor);
+
+           img {
+             transform: scale(1.1);
+           }
+         }
+       }
+
+       .banner {
+         width: 20%;
+         border-radius: var(--radius);
+
+         img {
+           border-radius: var(--radius);
+         }
+       }
+
+       .name {
+         padding: 5px 12px;
+         margin: 5px;
+         border-radius: var(--radius);
+         background: var(--mainColor_3);
+         color: white;
+         cursor: pointer;
+         transition: background-color .4s;
+
+         &:hover,
+         &.active {
+           background: var(--mainColor);
+         }
+       }
+     }
+   }
+
+   .flex {
+     display: flex;
+     justify-content: center;
+
+     .menu {
+       margin: 0 15px;
+       @include flexCenter;
+       background: var(--mainColor_6);
+
+       &:last-child {
+         background: var(--mainColor);
+         color: white;
+       }
+
+       &:hover {
+         background: var(--mainColor);
+       }
+     }
+   }
+
+ }

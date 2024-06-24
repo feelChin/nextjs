@@ -1,0 +1,38 @@
+@import "@style/_util.scss";
+
+.defaultModal {
+  @include fill;
+  background: var(--bgColor);
+  border-radius: var(--radius);
+  user-select: none;
+
+  * {
+    font-size: 14px;
+  }
+
+  .title,
+  .close {
+    position: absolute;
+    top: 15px;
+    z-index: 9999;
+    line-height: 1;
+    font-size: 15px;
+  }
+
+  .title {
+    left: 15px;
+  }
+
+  .close {
+    right: 15px;
+    cursor: pointer;
+  }
+
+  .wrapper {
+    @include fill;
+  }
+
+  .hasTitle {
+    padding: 45px 15px 0 15px;
+  }
+}

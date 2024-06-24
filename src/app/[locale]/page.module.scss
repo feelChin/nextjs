@@ -1,0 +1,34 @@
+@import "@style/_util.scss";
+
+.wrapper {
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: vw(100);
+    padding: 0 vw(50);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    background: var(--bgColor);
+    border-radius: var(--radius);
+    box-shadow: 0 0 vw(10) var(--bgColor_05);
+
+    p {
+      font-size: vw(24);
+      font-weight: 700;
+    }
+
+    i {
+      @include fs(16);
+      margin-left: 5px;
+      transition: color .4s;
+    }
+
+    :global(.menu) {
+      &:hover {
+        i {
+          color: white;
+        }
+      }
+    }
+  }
+}

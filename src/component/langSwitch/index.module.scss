@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import "@style/_util.scss";
+
+
+.langSwitch {
+  position: relative;
+  width: vw(120);
+  height: vw(50);
+  @include flexCenter;
+  background: var(--menu);
+  margin-left: vw(30);
+  border-radius: var(--radius);
+  cursor: pointer;
+
+  &:hover {
+    .wrapper {
+      @include v1;
+      transform: translateY(vw(5));
+    }
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transition: .4s;
+    @include v0;
+    background: var(--bgColor);
+    border-radius: var(--radius);
+    transform: translateY(vw(8));
+    box-shadow: 0 0 vw(3) var(--textColor_3);
+    overflow: hidden;
+
+    .item {
+      @include flexCenter;
+      width: 100%;
+      height: vw(50);
+      transition: .4s;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+        background: var(--mainColor);
+      }
+    }
+  }
+}

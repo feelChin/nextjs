@@ -1,0 +1,95 @@
+ @import "@style/_util.scss";
+
+ .detail {
+   display: flex;
+
+   .user {
+     position: relative;
+     width: vw(300);
+     text-align: center;
+
+     .userBox {
+       position: sticky;
+       top: vw(130);
+       min-height: vw(350);
+       background: var(--bgColor);
+       border-radius: var(--radius);
+       padding: vw(40);
+       box-shadow: 0 0 vw(10) var(--bgColor_05);
+     }
+
+     figure {
+       width: 100px;
+       height: 100px;
+       margin: 0 auto;
+     }
+
+     p {
+       margin: 10px 0 5px;
+     }
+
+     time {
+       @include fs(15);
+       color: var(--textColor_3);
+     }
+
+     .info {
+       display: flex;
+       justify-content: center;
+       margin-top: 15px;
+
+       &>div {
+         display: flex;
+         align-items: center;
+         margin: 0 5px;
+       }
+
+       i {
+         margin-right: 5px;
+       }
+
+       * {
+         color: var(--textColor_3);
+       }
+     }
+
+     .menu {
+       @include flexCenter;
+       background: var(--mainColor_6);
+       color: white;
+       margin: vw(20) auto 0;
+       border-radius: var(--radius);
+       padding: vw(10) vw(30);
+       @include fs(16);
+       cursor: pointer;
+       transition: background-color .4s;
+
+       &:hover {
+         background: var(--mainColor);
+       }
+
+       &.active {
+         background: var(--mainColor);
+       }
+
+       i {
+         color: white;
+         margin-right: 5px;
+       }
+     }
+   }
+
+   .wrapper {
+     flex: 1;
+     margin-left: 15px;
+
+     .text {
+       background: var(--bgColor);
+       border-radius: var(--radius);
+       padding: vw(40);
+       min-height: vw(350);
+       box-shadow: 0 0 vw(10) var(--bgColor_05);
+     }
+   }
+
+ }

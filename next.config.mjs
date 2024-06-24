@@ -1,8 +1,24 @@
+import createNextIntlPlugin from "next-intl/plugin";
+import cron from "node-cron";
+
+//定时任务
+// cron.schedule("* * * * *", async () => {
+// 	try {
+// 		await fetch(`http://localhost:9091/[locale]/api/article`, {
+// 			method: "put",
+// 		});
+// 		console.log("执行任务");
+// 	} catch (err) {
+// 		console.log(err);
+// 	}
+// });
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
-	env: {
-		NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
-	},
+	reactStrictMode: false,
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

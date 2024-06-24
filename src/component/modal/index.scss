@@ -1,0 +1,65 @@
+@import "@style/_util.scss";
+
+.portal {
+  position: fixed;
+  @include fill;
+  @include flexCenter;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+
+  @keyframes enter {
+    0% {
+      @include v0
+    }
+
+    100% {
+      @include v1
+    }
+  }
+
+  @keyframes childrenEnter {
+    0% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes leave {
+    0% {
+      @include v1
+    }
+
+    100% {
+      @include v0
+    }
+  }
+
+  @keyframes childrenLeave {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(0.8);
+    }
+  }
+
+  animation: enter 0.5s forwards;
+
+  .portalWrapper {
+    animation: childrenEnter 0.3s forwards;
+  }
+
+  &.leave {
+    animation: leave 0.5s forwards alternate;
+
+    .portalWrapper {
+      animation: childrenLeave 0.3s forwards alternate;
+    }
+  }
+}
