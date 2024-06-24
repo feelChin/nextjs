@@ -1,52 +1,59 @@
-import React, { useEffect, useRef } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import create_seed from "./seed";
 
-let portal_pool = [];
+let portal_pool: string[] = [];
 
-function Index({ width, height, visible, children }) {
-  const myPortal = useRef({
-    element: document.createElement("section"),
-    seed: create_seed(),
-  });
+interface inter_props {
+	width: number;
+	height: number;
+	visible: boolean;
+	children: ReactNode;
+}
 
-  useEffect(() => {
-    if (!visible) {
-      myPortal.current.element.className = "portal leave";
+function Index({ width, height, visible, children }: inter_props) {
+	const myPortal = useRef({
+		element: document.createElement("section"),
+		seed: create_seed(),
+	});
 
-      if (portal_pool.length > 3) {
-        portal_pool.shift();
-        const portalNode = document.querySelector(".portal");
-        if (portalNode) document.body.removeChild(portalNode);
-      }
-      return;
-    }
+	useEffect(() => {
+		if (!visible) {
+			myPortal.current.element.className = "portal leave";
 
-    myPortal.current.element.className = "portal";
-    myPortal.current.element.setAttribute("seed", myPortal.current.seed);
+			if (portal_pool.length > 3) {
+				portal_pool.shift();
+				const portalNode = document.querySelector(".portal");
+				if (portalNode) document.body.removeChild(portalNode);
+			}
+			return;
+		}
 
-    if (!portal_pool.includes(myPortal.current.seed)) {
-      document.body.appendChild(myPortal.current.element);
-      portal_pool.push(myPortal.current.seed);
-    }
-  }, [visible]);
+		myPortal.current.element.className = "portal";
+		myPortal.current.element.setAttribute("seed", myPortal.current.seed);
 
-  return (
-    <>
-      {createPortal(
-        <div
-          className="portalWrapper"
-          style={{
-            width,
-            height,
-          }}
-        >
-          {children}
-        </div>,
-        myPortal.current.element
-      )}
-    </>
-  );
+		if (!portal_pool.includes(myPortal.current.seed)) {
+			document.body.appendChild(myPortal.current.element);
+			portal_pool.push(myPortal.current.seed);
+		}
+	}, [visible]);
+
+	return (
+		<>
+			{createPortal(
+				<div
+					className="portalWrapper"
+					style={{
+						width,
+						height,
+					}}
+				>
+					{children}
+				</div>,
+				myPortal.current.element
+			)}
+		</>
+	);
 }
 
 export default Index;
