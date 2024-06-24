@@ -119,7 +119,7 @@ function Index({ children }: { children: ReactNode }) {
 	async function getList(params = {}) {
 		try {
 			const res = (await Http(
-				`http://localhost:9091/[locale]/api/articleList`,
+				`/[locale]/api/articleList`,
 				{
 					method: "get",
 				},

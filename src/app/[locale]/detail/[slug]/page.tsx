@@ -17,7 +17,7 @@ export default async function Index({ params }: props) {
 	const { slug } = params;
 
 	const { detail } = (await Http(
-		`http://localhost:9091/[locale]/api/article?id=${slug}`,
+		`${process.env.NEXT_URL}[locale]/api/article?id=${slug}`,
 		{
 			method: "get",
 		}

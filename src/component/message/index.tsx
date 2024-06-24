@@ -8,7 +8,7 @@ interface inter_param {
 	type: string;
 }
 
-let add: (v: inter_param) => void,
+let add: (v: inter_param) => void = () => {},
 	element: undefined | HTMLElement,
 	reactFiber,
 	maxCount = 5,

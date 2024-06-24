@@ -58,9 +58,7 @@ function Index({ type, t, end }: inter_props) {
 	async function sign(param: any) {
 		try {
 			const { token, msg } = (await Http(
-				`http://localhost:9091/[locale]/api/${
-					modalType === "login" ? "sign" : "user_info"
-				}`,
+				`/[locale]/api/${modalType === "login" ? "sign" : "user_info"}`,
 				{
 					method: modalType === "reset" ? "put" : "post",
 				},

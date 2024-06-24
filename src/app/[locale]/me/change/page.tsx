@@ -27,7 +27,7 @@ export default function Index() {
 	async function update() {
 		try {
 			const { msg } = (await Http(
-				`http://localhost:9091/[locale]/api/user_info`,
+				`/[locale]/api/user_info`,
 				{
 					method: "put",
 					headers: {

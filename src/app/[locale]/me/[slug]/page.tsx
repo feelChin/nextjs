@@ -50,7 +50,7 @@ export default function Index() {
 	async function getMeState() {
 		try {
 			const res = (await Http(
-				`http://localhost:9091/[locale]/api/me`,
+				`/[locale]/api/me`,
 				{
 					method: "get",
 				},
@@ -70,7 +70,7 @@ export default function Index() {
 	async function getMeList(v = {}) {
 		try {
 			const { data } = (await Http(
-				`http://localhost:9091/[locale]/api/me`,
+				`/[locale]/api/me`,
 				{
 					method: "get",
 				},

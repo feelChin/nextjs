@@ -48,7 +48,7 @@ export default function Index() {
 			}
 
 			await Http(
-				`http://localhost:9091/[locale]/api/article`,
+				`/[locale]/api/article`,
 				{
 					method: "post",
 					headers: {

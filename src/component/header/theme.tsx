@@ -1,8 +1,8 @@
 "use client";
 
 import store from "@util/store";
+import { setCookieData } from "@util/cookie";
 import style from "./index.module.scss";
-import { useEffect } from "react";
 
 function Index() {
 	const { theme, changeTheme } = store();
@@ -15,8 +15,7 @@ function Index() {
 					const myTheme = theme === "light" ? "dark" : "light";
 
 					changeTheme(myTheme);
-
-					localStorage.setItem("theme", myTheme);
+					setCookieData("theme", myTheme);
 				}}
 			></div>
 		</section>

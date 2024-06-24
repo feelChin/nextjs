@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-	useState,
-	useEffect,
-	useContext,
-	createContext,
-	ReactNode,
-} from "react";
+import React, { useState, useContext, createContext, ReactNode } from "react";
 
 type type_update = (v: inter_userInfo, cb?: () => void) => void;
 type type_remove = () => void;
@@ -40,9 +34,7 @@ const RootContext = createContext<inter_context>({
 
 export const RootProvider = ({ children }: { children: ReactNode }) => {
 	const [userInfo, setUserInfo] = useState<inter_userInfo>({});
-	const [theme, setTheme] = useState<type_theme>(
-		(localStorage.getItem("theme") as type_theme) || "light"
-	);
+	const [theme, setTheme] = useState<type_theme>("light");
 
 	const update_userInfo: type_update = (val, cb) => {
 		setUserInfo({
@@ -53,15 +45,12 @@ export const RootProvider = ({ children }: { children: ReactNode }) => {
 		cb && cb();
 	};
 
-	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", theme);
-	}, [theme]);
-
 	const remove_userInfo: type_remove = () => {
 		setUserInfo({});
 	};
 
 	const changeTheme = (v: type_theme) => {
+		document.documentElement.setAttribute("data-theme", v);
 		setTheme(v);
 	};
 

@@ -24,15 +24,12 @@ function Index() {
 
 	async function queryUserInfo(token: string) {
 		try {
-			const { data } = (await Http(
-				`http://localhost:9091/[locale]/api/user_info`,
-				{
-					method: "get",
-					headers: {
-						token: token,
-					},
-				}
-			)) as inter_get_userInfo;
+			const { data } = (await Http(`/[locale]/api/user_info`, {
+				method: "get",
+				headers: {
+					token: token,
+				},
+			})) as inter_get_userInfo;
 
 			updateUser({
 				...data,

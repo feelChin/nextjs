@@ -29,12 +29,9 @@ function Index({ id }: { id: string }) {
 
 	async function getUser() {
 		try {
-			const { data } = (await Http(
-				`http://localhost:9091/[locale]/api/articleList?id=${id}`,
-				{
-					method: "get",
-				}
-			)) as { data: inter_getUser };
+			const { data } = (await Http(`/[locale]/api/articleList?id=${id}`, {
+				method: "get",
+			})) as { data: inter_getUser };
 
 			setState(data);
 		} catch (err) {
@@ -47,7 +44,7 @@ function Index({ id }: { id: string }) {
 			if (!userInfo.token) return;
 
 			const { is_like, count } = (await Http(
-				`http://localhost:9091/[locale]/api/articleLike?id=${id}`,
+				`/[locale]/api/articleLike?id=${id}`,
 				{
 					method: "get",
 					headers: {
@@ -72,7 +69,7 @@ function Index({ id }: { id: string }) {
 	async function sendLike() {
 		try {
 			const { msg } = (await Http(
-				`http://localhost:9091/[locale]/api/articleLike`,
+				`/[locale]/api/articleLike`,
 				{
 					method: "post",
 					headers: {

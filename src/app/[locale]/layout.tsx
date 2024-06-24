@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import Header from "@component/header";
 import { getMessages } from "next-intl/server";
+import { cookies } from "next/headers";
 import { RootProvider } from "@util/store";
 import NextTopLoader from "nextjs-toploader";
 import "../../../public/iconfont/iconfont.css";
@@ -22,8 +23,17 @@ export default async function RootLayout({
 }>) {
 	const messages = await getMessages();
 
+	const cookieStore = cookies();
+	const { value } = cookieStore.get("theme") as { value: string };
+
+	let theme = "light";
+
+	try {
+		theme = JSON.parse(value);
+	} catch {}
+
 	return (
-		<html lang={locale} data-theme="light">
+		<html lang={locale} data-theme={theme}>
 			<body>
 				<RootProvider>
 					<NextIntlClientProvider messages={messages}>
