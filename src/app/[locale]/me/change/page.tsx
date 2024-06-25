@@ -13,8 +13,6 @@ import { useEffect, useState } from "react";
 import style from "./page.module.scss";
 
 export default function Index({ params }: inter_locale) {
-	unstable_setRequestLocale(params.locale);
-
 	const t = useTranslations("me");
 
 	const { userInfo, updateUser } = store();
