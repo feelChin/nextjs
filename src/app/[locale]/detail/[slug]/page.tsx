@@ -22,16 +22,16 @@ interface props {
 export default async function Index({ params }: props) {
 	const { slug } = params;
 
-	const { detail } = (await Http(
-		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
-		{
-			method: "get",
-		}
-	)) as { detail: any };
+	// const { detail } = (await Http(
+	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
+	// 	{
+	// 		method: "get",
+	// 	}
+	// )) as { detail: any };
 
-	// await db();
+	await db();
 
-	// const { detail } = await ArticleModel.findOne({ id: slug });
+	const { detail } = await ArticleModel.findOne({ id: slug });
 
 	return (
 		<section className="app">

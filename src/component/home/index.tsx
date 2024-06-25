@@ -62,19 +62,17 @@ export function RenderItem({ data }: { data: inter_item[] }) {
 			return (
 				<div className={style.item} key={p_id}>
 					<div className={style.user}>
-						<figure
-							onClick={() => {
-								router.push(`/${locale}/me/${user_id}`);
-							}}
-						>
-							<Image
-								className={style.avatar}
-								width={50}
-								height={50}
-								src={avatar as string}
-								alt=""
-							/>
-						</figure>
+						<Link href={`/${locale}/me/${user_id}`}>
+							<figure>
+								<Image
+									className={style.avatar}
+									width={50}
+									height={50}
+									src={avatar as string}
+									alt=""
+								/>
+							</figure>
+						</Link>
 						<div className={style.info}>
 							<h5>{name}</h5>
 							<time>{create_time}</time>

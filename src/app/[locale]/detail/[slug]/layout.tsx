@@ -21,15 +21,15 @@ export async function generateMetadata({ params }: inter_props) {
 }
 
 export async function generateStaticParams() {
-	const { data } = (await Http(
-		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
-		{
-			method: "get",
-		}
-	)) as { data: any };
-	// await db();
+	// const { data } = (await Http(
+	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
+	// 	{
+	// 		method: "get",
+	// 	}
+	// )) as { data: any };
+	await db();
 
-	// const data = await ArticleListModel.find();
+	const data = await ArticleListModel.find();
 
 	return data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
