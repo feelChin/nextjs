@@ -47,16 +47,16 @@ export default function Index() {
 				}
 			}
 
-			// await Http(
-			// 	`/[locale]/api/article`,
-			// 	{
-			// 		method: "post",
-			// 		headers: {
-			// 			token: userInfo.token,
-			// 		},
-			// 	},
-			// 	param
-			// );
+			await Http(
+				`/[locale]/api/article`,
+				{
+					method: "post",
+					headers: {
+						token: userInfo.token,
+					},
+				},
+				param
+			);
 
 			Modal.cancel();
 			Message.success("发布成功");
