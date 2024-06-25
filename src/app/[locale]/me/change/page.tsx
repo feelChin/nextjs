@@ -7,14 +7,10 @@ import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Http from "@util/fetch";
 import Message from "@component/message";
-import { inter_locale } from "@type/index";
-import { unstable_setRequestLocale } from "next-intl/server";
 import { useEffect, useState } from "react";
 import style from "./page.module.scss";
 
-export default async function Index({ params }: inter_locale) {
-	unstable_setRequestLocale(params.locale);
-
+export default function Index() {
 	const t = useTranslations("me");
 
 	const { userInfo, updateUser } = store();
