@@ -5,6 +5,7 @@ import store, { inter_userInfo } from "@util/store";
 import { getCookieData } from "@util/cookie";
 import Modal from "@component/modal";
 import Login from "@component/login";
+import nProgress from "nprogress";
 
 export type type_ = "login" | "register" | "reset";
 
@@ -31,6 +32,8 @@ function Index({ children, type = "login" }: inter_props) {
 					end={(v: inter_userInfo) => {
 						updateUser(v, () => {
 							Modal.cancel();
+
+							nProgress.done();
 						});
 					}}
 				/>
