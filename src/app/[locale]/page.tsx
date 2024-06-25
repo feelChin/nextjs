@@ -3,9 +3,16 @@ import Home from "@component/home";
 import Link from "next/link";
 import AuthCheck from "@component/authCheck";
 import ArticleList from "@component/home/articleList";
+import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
-export default async function Index() {
+export default async function Index({
+	params,
+}: {
+	params: { locale: string };
+}) {
+	unstable_setRequestLocale(params.locale);
+
 	const t = await getTranslations("home");
 	const locale = await getLocale();
 
