@@ -37,14 +37,13 @@ export default async function RootLayout({
 			<body>
 				<RootProvider>
 					<NextIntlClientProvider messages={messages}>
-						123321
-						{/* <NextTopLoader
+						<NextTopLoader
 							color="#584df0"
 							height={2}
 							template='<div class="bar" role="bar"><div class="peg"></div></div>'
 						/>
 						<Header />
-						{children} */}
+						{children}
 					</NextIntlClientProvider>
 				</RootProvider>
 			</body>
