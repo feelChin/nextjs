@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Modal from "@component/modal";
+import NProgress from "nprogress";
 import style from "./index.module.scss";
 
 interface inter_props {
@@ -15,6 +16,7 @@ function Index({ title, children }: inter_props) {
 				className={style.close}
 				onClick={() => {
 					Modal.cancel();
+					NProgress.done();
 				}}
 			>
 				x

@@ -1,7 +1,13 @@
 import Http from "@util/fetch";
-import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Loading from "@component/loading";
+import { NextResponse } from "next/server";
+import db from "@util/db";
+import { jwt_verify } from "@util/db/jwt";
+import ArticleListModel from "@util/db/mongoose/articleList";
+import ArticleModel from "@util/db/mongoose/article";
+import UserInfoModel from "@util/db/mongoose/user_info";
+import dayjs from "dayjs";
 import style from "./page.module.scss";
 
 const WithCustomLoading = dynamic(() => import("./user"), {
@@ -16,12 +22,16 @@ interface props {
 export default async function Index({ params }: props) {
 	const { slug } = params;
 
-	const { detail } = (await Http(
-		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
-		{
-			method: "get",
-		}
-	)) as { detail: any };
+	// const { detail } = (await Http(
+	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
+	// 	{
+	// 		method: "get",
+	// 	}
+	// )) as { detail: any };
+
+	await db();
+
+	const { detail } = await ArticleModel.findOne({ id: slug });
 
 	return (
 		<section className="app">
