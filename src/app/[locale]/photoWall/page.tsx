@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { bannerPool } from "@util/db/roll";
+import { inter_locale } from "@type/index";
+import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
 export const metadata: Metadata = {
@@ -9,7 +11,9 @@ export const metadata: Metadata = {
 	description: "feelChin",
 };
 
-export default async function Index() {
+export default async function Index({ params }: inter_locale) {
+	unstable_setRequestLocale(params.locale);
+
 	return (
 		<section className="app">
 			<div className="w1200">

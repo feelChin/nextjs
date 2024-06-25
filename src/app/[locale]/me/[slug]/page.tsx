@@ -12,6 +12,8 @@ import Loading from "@component/loading";
 import Message from "@component/message";
 import dynamic from "next/dynamic";
 import dayjs from "dayjs";
+import { inter_locale } from "@type/index";
+import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
 interface inter_meState {
@@ -34,7 +36,9 @@ const WithCustomLoading = dynamic(() => import("@component/scrollPage"), {
 	ssr: false,
 });
 
-export default function Index() {
+export default async function Index({ params }: inter_locale) {
+	unstable_setRequestLocale(params.locale);
+
 	const t = useTranslations("me");
 	const locale = useLocale();
 	const router = useRouter();

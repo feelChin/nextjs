@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 import Loading from "@component/loading";
+import { inter_locale } from "@type/index";
+import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
 export const metadata: Metadata = {
@@ -15,7 +17,9 @@ const WithCustomLoading = dynamic(() => import("./paper"), {
 	ssr: false,
 });
 
-export default async function Index() {
+export default async function Index({ params }: inter_locale) {
+	unstable_setRequestLocale(params.locale);
+
 	const t = await getTranslations("edit");
 
 	return (
