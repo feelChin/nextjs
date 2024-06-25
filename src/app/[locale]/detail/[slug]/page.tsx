@@ -8,6 +8,7 @@ import ArticleListModel from "@util/db/mongoose/articleList";
 import ArticleModel from "@util/db/mongoose/article";
 import UserInfoModel from "@util/db/mongoose/user_info";
 import dayjs from "dayjs";
+import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
 const WithCustomLoading = dynamic(() => import("./user"), {
@@ -59,7 +60,9 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: props) {
-	const { slug } = params;
+	const { slug, locale } = params;
+
+	unstable_setRequestLocale(locale);
 
 	console.log(params);
 

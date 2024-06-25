@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import { RootProvider } from "@util/store";
 import NextTopLoader from "nextjs-toploader";
+import { unstable_setRequestLocale } from "next-intl/server";
 import "../../../public/iconfont/iconfont.css";
 import "@style/index.scss";
 
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
 	keywords: "feelChin",
 	description: "feelChin",
 };
+
+const locales = ["en", "de"];
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
+}
 
 export default async function RootLayout({
 	children,
@@ -31,6 +38,8 @@ export default async function RootLayout({
 	try {
 		theme = JSON.parse(value);
 	} catch {}
+
+	unstable_setRequestLocale(locale);
 
 	return (
 		<html lang={locale} data-theme={theme}>
