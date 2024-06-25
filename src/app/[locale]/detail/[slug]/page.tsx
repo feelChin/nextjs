@@ -40,17 +40,28 @@ export async function generateStaticParams() {
 	// 		method: "get",
 	// 	}
 	// )) as { data: any };
-	await db();
+	// await db();
 
-	const data = await ArticleListModel.find();
+	// const data = await ArticleListModel.find();
 
-	return data.map(({ p_id }: { p_id: number }) => ({
-		slug: String(p_id),
-	}));
+	// return data.map(({ p_id }: { p_id: number }) => ({
+	// 	slug: String(p_id),
+	// }));
+
+	return [
+		{
+			slug: "1",
+		},
+		{
+			slug: "2",
+		},
+	];
 }
 
 export default function Page({ params }: props) {
 	const { slug } = params;
+
+	console.log(params);
 
 	// const { detail } = (await Http(
 	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
