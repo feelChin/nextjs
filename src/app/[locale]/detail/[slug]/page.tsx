@@ -1,13 +1,6 @@
 import Http from "@util/fetch";
 import dynamic from "next/dynamic";
 import Loading from "@component/loading";
-import { NextResponse } from "next/server";
-import db from "@util/db";
-import { jwt_verify } from "@util/db/jwt";
-import ArticleListModel from "@util/db/mongoose/articleList";
-import ArticleModel from "@util/db/mongoose/article";
-import UserInfoModel from "@util/db/mongoose/user_info";
-import dayjs from "dayjs";
 import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
 
@@ -36,9 +29,6 @@ export async function generateStaticParams() {
 			method: "get",
 		}
 	)) as { data: any };
-	// await db();
-
-	// const data = await ArticleListModel.find();
 
 	return data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
@@ -56,10 +46,6 @@ export default async function Index({ params }: inter_props) {
 			method: "get",
 		}
 	)) as { detail: any };
-
-	// await db();
-
-	// const { detail } = await ArticleModel.findOne({ id: slug });
 
 	return (
 		<section className="app">
