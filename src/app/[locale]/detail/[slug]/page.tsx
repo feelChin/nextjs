@@ -43,17 +43,20 @@ export async function generateStaticParams() {
 	await db();
 
 	const data = await ArticleListModel.find();
-	console.log(1);
-	console.log(data);
-	console.log(3);
-	return data.map(({ p_id }: { p_id: number }) => ({
+
+	const a = data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
 	}));
+	console.log(1);
+	console.log(a);
+	console.log(2);
+	return a;
 }
 
 export default async function Index({ params }: props) {
 	const { slug } = params;
-
+	console.log(3);
+	console.log(params);
 	// const { detail } = (await Http(
 	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
 	// 	{
@@ -62,8 +65,12 @@ export default async function Index({ params }: props) {
 	// )) as { detail: any };
 
 	await db();
-
+	console.log(4);
 	const { detail } = await ArticleModel.findOne({ id: slug });
+
+	console.log(5);
+
+	console.log(detail);
 
 	return (
 		<section className="app">
