@@ -43,7 +43,9 @@ export async function generateStaticParams() {
 	await db();
 
 	const data = await ArticleListModel.find();
-
+	console.log(1);
+	console.log(data);
+	console.log(3);
 	return data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
 	}));
