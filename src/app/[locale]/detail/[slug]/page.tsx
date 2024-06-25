@@ -44,19 +44,14 @@ export async function generateStaticParams() {
 
 	const data = await ArticleListModel.find();
 
-	const a = data.map(({ p_id }: { p_id: number }) => ({
+	return data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
 	}));
-	console.log(1);
-	console.log(a);
-	console.log(2);
-	return a;
 }
 
-export default async function Index({ params }: props) {
+export default function Page({ params }: props) {
 	const { slug } = params;
-	console.log(3);
-	console.log(params);
+
 	// const { detail } = (await Http(
 	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
 	// 	{
@@ -64,13 +59,9 @@ export default async function Index({ params }: props) {
 	// 	}
 	// )) as { detail: any };
 
-	await db();
-	console.log(4);
-	const { detail } = await ArticleModel.findOne({ id: slug });
+	// await db();
 
-	console.log(5);
-
-	console.log(detail);
+	// const { detail } = await ArticleModel.findOne({ id: slug });
 
 	return (
 		<section className="app">
@@ -79,7 +70,7 @@ export default async function Index({ params }: props) {
 					<WithCustomLoading id={slug} />
 				</div>
 				<div className={style.wrapper}>
-					<div className={style.text}>{detail}</div>
+					<div className={style.text}>{slug}</div>
 				</div>
 			</div>
 		</section>
