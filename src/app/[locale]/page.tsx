@@ -23,9 +23,9 @@ export default async function Index() {
 						</AuthCheck>
 					</Link>
 				</div>
-				<Home>
+				{/* <Home>
 					<ArticleList />
-				</Home>
+				</Home> */}
 			</div>
 		</section>
 	);

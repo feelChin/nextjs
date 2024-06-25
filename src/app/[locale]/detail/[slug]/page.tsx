@@ -80,9 +80,9 @@ export default function Page({ params }: props) {
 	return (
 		<section className="app">
 			<div className={`w1200 ${style.detail}`}>
-				<div className={style.user}>
+				{/* <div className={style.user}>
 					<WithCustomLoading id={slug} />
-				</div>
+				</div> */}
 				<div className={style.wrapper}>
 					<div className={style.text}>{slug}</div>
 				</div>
