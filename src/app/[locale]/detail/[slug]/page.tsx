@@ -40,12 +40,12 @@ export async function generateStaticParams() {
 
 	// const data = await ArticleListModel.find();
 
-	// return data.map(({ p_id }: { p_id: number }) => ({
-	// 	slug: String(p_id),
-	// }));
+	return data.map(({ p_id }: { p_id: number }) => ({
+		slug: String(p_id),
+	}));
 }
 
-export default async function Page({ params }: inter_props) {
+export default async function Index({ params }: inter_props) {
 	const { slug, locale } = params;
 
 	unstable_setRequestLocale(locale);
