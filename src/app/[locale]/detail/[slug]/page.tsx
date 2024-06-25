@@ -16,8 +16,10 @@ interface props {
 export default async function Index({ params }: props) {
 	const { slug } = params;
 
+	console.log(process.env.NEXT_PUBLIC_BASE_URL);
+
 	const { detail } = (await Http(
-		`${process.env.NEXT_URL}[locale]/api/article?id=${slug}`,
+		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
 		{
 			method: "get",
 		}

@@ -3,7 +3,7 @@ import { RenderItem, inter_item } from "./index";
 
 async function Index() {
 	const { data } = (await Http(
-		`${process.env.NEXT_URL}[locale]/api/articleList?hot=1`,
+		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?hot=1`,
 		{
 			method: "get",
 		}

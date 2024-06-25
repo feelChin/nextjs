@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: inter_props) {
 
 export async function generateStaticParams() {
 	const { data } = (await Http(
-		`${process.env.NEXT_URL}[locale]/api/articleList?type=all`,
+		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
 		{
 			method: "get",
 		}

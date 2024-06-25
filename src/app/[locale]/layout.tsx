@@ -24,7 +24,7 @@ export default async function RootLayout({
 	const messages = await getMessages();
 
 	const cookieStore = cookies();
-	const { value } = cookieStore.get("theme") as { value: string };
+	const { value } = (cookieStore.get("theme") || {}) as { value: string };
 
 	let theme = "light";
 
