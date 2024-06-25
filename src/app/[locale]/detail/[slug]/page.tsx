@@ -60,7 +60,9 @@ export async function generateStaticParams() {
 }
 
 export default function Page({ params }: props) {
-	const { slug } = params;
+	const { slug, locale } = params;
+
+	unstable_setRequestLocale(locale);
 
 	console.log(params);
 
