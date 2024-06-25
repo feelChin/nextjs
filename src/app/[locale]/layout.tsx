@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 	description: "feelChin",
 };
 
-const locales = ["en", "de"];
-
 export function generateStaticParams() {
+	const locales = ["cn", "tc"];
+
 	return locales.map((locale) => ({ locale }));
 }
 
