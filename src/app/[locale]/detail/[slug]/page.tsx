@@ -16,16 +16,11 @@ const WithCustomLoading = dynamic(() => import("./user"), {
 	ssr: false,
 });
 
-interface props {
-	params: any;
-}
-
-interface inter_par {
-	slug: string;
-}
-
 interface inter_props {
-	params: inter_par;
+	params: {
+		slug: string;
+		locale: string;
+	};
 }
 
 export async function generateMetadata({ params }: inter_props) {
@@ -35,12 +30,12 @@ export async function generateMetadata({ params }: inter_props) {
 }
 
 export async function generateStaticParams() {
-	// const { data } = (await Http(
-	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
-	// 	{
-	// 		method: "get",
-	// 	}
-	// )) as { data: any };
+	const { data } = (await Http(
+		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
+		{
+			method: "get",
+		}
+	)) as { data: any };
 	// await db();
 
 	// const data = await ArticleListModel.find();
@@ -48,30 +43,19 @@ export async function generateStaticParams() {
 	// return data.map(({ p_id }: { p_id: number }) => ({
 	// 	slug: String(p_id),
 	// }));
-
-	return [
-		{
-			slug: "1",
-		},
-		{
-			slug: "2",
-		},
-	];
 }
 
-export default function Page({ params }: props) {
+export default async function Page({ params }: inter_props) {
 	const { slug, locale } = params;
 
 	unstable_setRequestLocale(locale);
 
-	console.log(params);
-
-	// const { detail } = (await Http(
-	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
-	// 	{
-	// 		method: "get",
-	// 	}
-	// )) as { detail: any };
+	const { detail } = (await Http(
+		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
+		{
+			method: "get",
+		}
+	)) as { detail: any };
 
 	// await db();
 
@@ -80,11 +64,11 @@ export default function Page({ params }: props) {
 	return (
 		<section className="app">
 			<div className={`w1200 ${style.detail}`}>
-				{/* <div className={style.user}>
+				<div className={style.user}>
 					<WithCustomLoading id={slug} />
-				</div> */}
+				</div>
 				<div className={style.wrapper}>
-					<div className={style.text}>{slug}</div>
+					<div className={style.text}>{detail}</div>
 				</div>
 			</div>
 		</section>

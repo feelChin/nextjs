@@ -4,13 +4,10 @@ import Link from "next/link";
 import AuthCheck from "@component/authCheck";
 import ArticleList from "@component/home/articleList";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { inter_locale } from "@type/index";
 import style from "./page.module.scss";
 
-export default async function Index({
-	params,
-}: {
-	params: { locale: string };
-}) {
+export default async function Index({ params }: inter_locale) {
 	unstable_setRequestLocale(params.locale);
 
 	const t = await getTranslations("home");
@@ -30,9 +27,9 @@ export default async function Index({
 						</AuthCheck>
 					</Link>
 				</div>
-				{/* <Home>
+				<Home>
 					<ArticleList />
-				</Home> */}
+				</Home>
 			</div>
 		</section>
 	);
