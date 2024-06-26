@@ -31,7 +31,7 @@ export default async function middleware(request: NextRequest) {
 		await middleware1(request);
 
 		const handleI18nRouting = createIntlMiddleware({
-			locales: ["cn", "tc"],
+			locales: ["cn", "tw"],
 			defaultLocale: "cn",
 		});
 

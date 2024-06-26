@@ -12,7 +12,7 @@ const lang = [
 		name: "简体中文",
 	},
 	{
-		code: "tc",
+		code: "tw",
 		name: "繁体中文",
 	},
 ];

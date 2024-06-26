@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-	const locales = ["cn", "tc"];
+	const locales = ["cn", "tw"];
 
 	return locales.map((locale) => ({ locale }));
 }
