@@ -16,6 +16,7 @@
   --bgColor: white;
   --bgColor_05: rgba(51, 51, 51, .05);
   --menu: rgba(51, 51, 51, .05);
+  --input: rgba(51, 51, 51, .05);
 }
 
 [data-theme="dark"] {
@@ -26,6 +27,7 @@
   --bgColor: #000;
   --bgColor_05: rgba(0, 0, 0, .85);
   --menu: rgba(255, 255, 255, .2);
+  --input: rgba(255, 255, 255, .05);
 }
 
 * {

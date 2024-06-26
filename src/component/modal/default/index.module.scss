@@ -5,6 +5,7 @@
   background: var(--bgColor);
   border-radius: var(--radius);
   user-select: none;
+  box-shadow: 0 0 vw(10) var(--textColor_3);
 
   * {
     font-size: 14px;

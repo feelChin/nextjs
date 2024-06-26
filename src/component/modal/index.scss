@@ -1,7 +1,7 @@
 @import "@style/_util.scss";
 
 .portal {
-  position: fixed;
+  position: fixed !important;
   @include fill;
   @include flexCenter;
   z-index: 999;
