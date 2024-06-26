@@ -1,13 +1,9 @@
 import Http from "@util/fetch";
-import dynamic from "next/dynamic";
+import { Suspense } from "react";
+import User from "./user";
 import Loading from "@component/loading";
 import { unstable_setRequestLocale } from "next-intl/server";
 import style from "./page.module.scss";
-
-const WithCustomLoading = dynamic(() => import("./user"), {
-	loading: () => <Loading />,
-	ssr: false,
-});
 
 interface inter_props {
 	params: {
@@ -51,7 +47,9 @@ export default async function Index({ params }: inter_props) {
 		<section className="app">
 			<div className={`w1200 ${style.detail}`}>
 				<div className={style.user}>
-					<WithCustomLoading id={slug} />
+					<Suspense fallback={<Loading />}>
+						<User id={slug} />
+					</Suspense>
 				</div>
 				<div className={style.wrapper}>
 					<div className={style.text}>{detail}</div>

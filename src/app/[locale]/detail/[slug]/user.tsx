@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Http, { cancelHttp } from "@util/fetch";
+import Loading from "@component/loading";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import AuthCheck from "@component/authCheck";
@@ -107,7 +108,7 @@ function Index({ id }: { id: string }) {
 
 	return (
 		<div className={style.userBox}>
-			{state.avatar && (
+			{state.avatar ? (
 				<>
 					<figure>
 						<Image
@@ -143,6 +144,8 @@ function Index({ id }: { id: string }) {
 						</AuthCheck>
 					</div>
 				</>
+			) : (
+				<Loading />
 			)}
 		</div>
 	);
