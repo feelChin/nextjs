@@ -3,6 +3,9 @@ import { Suspense } from "react";
 import User from "./user";
 import Loading from "@component/loading";
 import { unstable_setRequestLocale } from "next-intl/server";
+import db from "@util/db";
+import ArticleModel from "@util/db/mongoose/article";
+import ArticleListModel from "@util/db/mongoose/articleList";
 import style from "./page.module.scss";
 
 interface inter_props {
@@ -19,12 +22,16 @@ export async function generateMetadata({ params }: inter_props) {
 }
 
 export async function generateStaticParams() {
-	const { data } = (await Http(
-		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
-		{
-			method: "get",
-		}
-	)) as { data: any };
+	await db();
+
+	const data = await ArticleListModel.find();
+
+	// const { data } = (await Http(
+	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/articleList?type=all`,
+	// 	{
+	// 		method: "get",
+	// 	}
+	// )) as { data: any };
 
 	return data.map(({ p_id }: { p_id: number }) => ({
 		slug: String(p_id),
@@ -36,12 +43,16 @@ export default async function Index({ params }: inter_props) {
 
 	unstable_setRequestLocale(locale);
 
-	const { detail } = (await Http(
-		`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
-		{
-			method: "get",
-		}
-	)) as { detail: any };
+	await db();
+
+	const { detail } = await ArticleModel.findOne({ id: Number(slug) });
+
+	// const { detail } = (await Http(
+	// 	`${process.env.NEXT_PUBLIC_BASE_URL}[locale]/api/article?id=${slug}`,
+	// 	{
+	// 		method: "get",
+	// 	}
+	// )) as { detail: any };
 
 	return (
 		<section className="app">
